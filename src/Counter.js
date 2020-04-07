@@ -11,19 +11,18 @@ class Counter extends React.Component {
       prices: [],
       priceSum: null,
       visible: false,
-      focusedPriceId: null
+      focusedPriceId: null,
     };
   }
 
   componentDidMount() {
     this.fetchPrices();
   }
-  
+
   fetchPrices() {
-    Fetch(`http://localhost:3000/prices/allToday`)
-      .then((get) => {
-        this.setState({ prices: get });
-      });
+    Fetch(`http://localhost:4000/prices/allToday`).then((get) => {
+      this.setState({ prices: get });
+    });
   }
 
   handleInput = (event) => {
@@ -40,17 +39,17 @@ class Counter extends React.Component {
   handleKeyDown = (e) => {
     const { prices, inputValue } = this.state;
     if (e.key === "Enter" || e.key === " ") {
-      Fetch(`http://localhost:3000/prices`, {
+      fetch(`http://localhost:3000/prices`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          price: parseFloat(inputValue)
-        })
-      })        .then((information) => {
-          this.setState({ prices: [...prices, information] });
-        });
+          price: parseFloat(inputValue),
+        }),
+      }).then((information) => {
+        this.setState({ prices: [...prices, information] });
+      });
       this.setState({ inputValue: 0 });
     }
   };
@@ -58,7 +57,7 @@ class Counter extends React.Component {
   removeFromPriceArr = (_id) => {
     const { prices } = this.state;
     fetch(`http://localhost:3000/prices/${_id}`, {
-      method: "DELETE"
+      method: "DELETE",
     }).then(() => {
       const updatePrices = prices.filter((element) => element._id !== _id);
       this.setState({ prices: updatePrices });
@@ -80,7 +79,7 @@ class Counter extends React.Component {
             >
               <span>{index + 1})</span>
               <span>{el.price}</span>
-              {(this.state.visible && this.state.focusedPriceId===el._id)&&(
+              {this.state.visible && this.state.focusedPriceId === el._id && (
                 <span>
                   <button onClick={() => this.removeFromPriceArr(el._id)}>
                     <span>X</span>
