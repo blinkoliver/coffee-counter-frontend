@@ -99,7 +99,7 @@ class Counter extends React.Component {
             onChange={(event) => this.handleInput(event)}
             onKeyDown={this.handleKeyDown}
           ></input>
-          <h1>{getSum(this.state.prices)}BYN</h1>
+          <h2>{getSum(this.state.prices)}BYN</h2>
         </div>
       </div>
     );
