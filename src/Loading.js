@@ -8,7 +8,7 @@ function Loading() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>
-            Loading
+            Fetching Data
           </h1>
           <a
             className="App-link"
@@ -16,7 +16,7 @@ function Loading() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Fetching Data
           </a>
         </header>
       </div>
