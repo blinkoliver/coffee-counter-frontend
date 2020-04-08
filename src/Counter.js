@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { getSum, Fetch } from "./utils";
+import { getSum } from "./utils";
 import moment from "moment/moment";
 
 class Counter extends React.Component {
@@ -20,9 +20,11 @@ class Counter extends React.Component {
   }
 
   fetchPrices() {
-    Fetch(`http://localhost:4000/prices/allToday`).then((get) => {
-      this.setState({ prices: get });
-    });
+    fetch(`http://localhost:4000/prices/allToday`)
+      .then((response) => response.json())
+      .then((get) => {
+        this.setState({ prices: get });
+      });
   }
 
   handleInput = (event) => {
@@ -39,7 +41,7 @@ class Counter extends React.Component {
   handleKeyDown = (e) => {
     const { prices, inputValue } = this.state;
     if (e.key === "Enter" || e.key === " ") {
-      fetch(`http://localhost:3000/prices`, {
+      fetch(`http://localhost:4000/prices`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +49,9 @@ class Counter extends React.Component {
         body: JSON.stringify({
           price: parseFloat(inputValue),
         }),
-      }).then((information) => {
+      })
+      .then((response) => response.json())
+      .then((information) => {
         this.setState({ prices: [...prices, information] });
       });
       this.setState({ inputValue: 0 });
@@ -56,12 +60,13 @@ class Counter extends React.Component {
 
   removeFromPriceArr = (_id) => {
     const { prices } = this.state;
-    fetch(`http://localhost:3000/prices/${_id}`, {
+    fetch(`http://localhost:4000/prices/${_id}`, {
       method: "DELETE",
-    }).then(() => {
-      const updatePrices = prices.filter((element) => element._id !== _id);
-      this.setState({ prices: updatePrices });
-    });
+    })
+      .then(() => {
+        const updatePrices = prices.filter((element) => element._id !== _id);
+        this.setState({ prices: updatePrices });
+      });
   };
 
   render() {
