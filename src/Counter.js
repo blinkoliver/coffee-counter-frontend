@@ -3,12 +3,10 @@ import "./App.css";
 import { getSum } from "./utils";
 import moment from "moment/moment";
 
-var nodeEnv = process.env.NODE_ENV;
-if (process.env.NODE_ENV === "development") {
-  var url = process.env.REACT_APP_API_LOCAL_URL;
-} else {
-  url = process.env.REACT_APP_API_URL;
-}
+const url =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_API_LOCAL_URL
+    : process.env.REACT_APP_API_URL;
 
 class Counter extends React.Component {
   constructor(props) {
@@ -76,7 +74,7 @@ class Counter extends React.Component {
   };
 
   render() {
-    console.log(nodeEnv, url);
+    console.log (url);
 
     return (
       <div className="App">
