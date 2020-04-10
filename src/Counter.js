@@ -3,6 +3,13 @@ import "./App.css";
 import { getSum } from "./utils";
 import moment from "moment/moment";
 
+var nodeEnv = process.env.NODE_ENV;
+if (process.env.NODE_ENV === "development") {
+  var url = process.env.REACT_APP_API_LOCAL_URL;
+} else {
+  url = process.env.REACT_APP_API_URL;
+}
+
 class Counter extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +27,7 @@ class Counter extends React.Component {
   }
 
   fetchPrices() {
-    fetch(`http://localhost:4000/prices/allToday`)
+    fetch(`${url}/prices/allToday`)
       .then((response) => response.json())
       .then((get) => {
         this.setState({ prices: get });
@@ -41,7 +48,7 @@ class Counter extends React.Component {
   handleKeyDown = (e) => {
     const { prices, inputValue } = this.state;
     if (e.key === "Enter" || e.key === " ") {
-      fetch(`http://localhost:4000/prices`, {
+      fetch(`${url}/prices`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,26 +57,27 @@ class Counter extends React.Component {
           price: parseFloat(inputValue),
         }),
       })
-      .then((response) => response.json())
-      .then((information) => {
-        this.setState({ prices: [...prices, information] });
-      });
+        .then((response) => response.json())
+        .then((information) => {
+          this.setState({ prices: [...prices, information] });
+        });
       this.setState({ inputValue: 0 });
     }
   };
 
   removeFromPriceArr = (_id) => {
     const { prices } = this.state;
-    fetch(`http://localhost:4000/prices/${_id}`, {
+    fetch(`${url}/prices/${_id}`, {
       method: "DELETE",
-    })
-      .then(() => {
-        const updatePrices = prices.filter((element) => element._id !== _id);
-        this.setState({ prices: updatePrices });
-      });
+    }).then(() => {
+      const updatePrices = prices.filter((element) => element._id !== _id);
+      this.setState({ prices: updatePrices });
+    });
   };
 
   render() {
+    console.log(nodeEnv, url);
+
     return (
       <div className="App">
         <div className="CashArr">
