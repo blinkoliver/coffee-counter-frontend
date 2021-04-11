@@ -1,15 +1,27 @@
-.App {
-  text-align: center;
-  background-color: #282c34;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html {
+  height: 100%;
 }
-
+body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  height: 100%;
+}
+header {
+  height: 10%;
+}
+main {
+  height: 80%;
+}
+footer {
+  height: 10%;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -21,10 +33,6 @@
   }
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -34,58 +42,3 @@
   }
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input {
-  width: 300px;
-  height: 50px;
-  border-radius: 15px;
-  border-width: 0px;
-  font-size: 50px;
-  text-align: center;
-  outline: none;
-  padding: 10px 0px 10px 0px;
-  margin-right: 15px;
-}
-.CashArr {
-  height: auto;
-  max-height: 100%;
-  width: auto;
-  max-width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-.CashArr div {
-  text-align: left;
-}
-.CashArr div span:first-child {
-  margin: 3px 10px 3px 20px;
-}
-.CashArr div span button span:first-child {
-  margin: 0px;
-}
-.CashArr div span:nth-child(3) span {
-  font-size: xx-small;
-}
-.CashArr div span button {
-  padding: 2px 7px 2px 7px;
-  height: 18px;
-  border-radius: 22px;
-  border-width: 0px;
-  color: white;
-  background-color: rgb(180, 62, 62);
-  position: relative;
-  bottom: 10px;
-  font-size: xx-small;
-}
-.Sum {
-  display: flex;
-  flex-direction: column;
-}
-.Sum h1 {
-  margin-right: 50px;
-}
