@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getSum } from "../utils";
 import useStyles from "./CounterClasses";
-import { LinearProgress } from "@material-ui/core";
+import { LinearProgress, CircularProgress } from "@material-ui/core";
 import Price from "./Price";
 import { v4 as uuid } from "uuid";
 import moment from "moment";
@@ -149,6 +149,11 @@ const Counter = () => {
             onKeyDown={handleKeyDown}
           ></input>
           <h2>{getSum(prices)}BYN</h2>
+          {isPriceFetching ? (
+            <CircularProgress className={counterClasses.circular} />
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
