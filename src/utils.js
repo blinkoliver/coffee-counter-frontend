@@ -1,6 +1,6 @@
 export const getSum = (prices) => {
   return prices
-    .map((element) => element.price)
+    .map((element) => element.value)
     .reduce((a, b) => a + b, 0)
     .toFixed(2);
 };

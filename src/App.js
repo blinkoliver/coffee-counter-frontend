@@ -11,8 +11,9 @@ const App = () => {
     <>
       <Header />
       <main>
-        <Route path={"/coffe-counter/counter"} component={Counter} />
+        <Route path={"/"} exact={true} component={Home} />
         <Route path={"/coffe-counter"} exact={true} component={Home} />
+        <Route path={"/coffe-counter/counter"} component={Counter} />
       </main>
       <Footer />
     </>

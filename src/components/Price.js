@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import useStyles from "./PriceClasses";
 import moment from "moment/moment";
+import { Chip } from "@material-ui/core";
 
 const Price = (props) => {
-  const { number, _id, price, date, removeFromPriceArr } = props;
+  const { number, id, value, date, removeFromPriceArr } = props;
   const [visible, setVisible] = useState(false);
   const [focusedPriceId, setFocusedPriceId] = useState(false);
   const priceClasses = useStyles();
+
   return (
-    <div
-      key={_id}
-      className={priceClasses.price}
-      onMouseOver={() => {
-        setVisible(true);
-        setFocusedPriceId(_id);
-      }}
-      onMouseLeave={() => setVisible(false)}
-    >
-      <span>{number}</span>
-      {") "}
-      <span>{price}</span>
-      {visible && focusedPriceId === _id && (
-        <span>
-          <button onClick={() => removeFromPriceArr(_id)}>
-            <span>X</span>
-          </button>
-          <span>{moment(date).format("HH:mm:ss")}</span>
+    <>
+      <Chip
+        key={id}
+        label={`${number}) ${value}`}
+        onDelete={() => removeFromPriceArr(id)}
+        className={priceClasses.chip}
+        onMouseOver={() => {
+          setVisible(true);
+          setFocusedPriceId(id);
+        }}
+        onMouseLeave={() => setVisible(false)}
+      />
+      {visible && focusedPriceId === id && (
+        <span className={priceClasses.time}>
+          {`${number}) ${value}BYN created at `}
+          {moment(date).format("HH:mm:ss")}
         </span>
       )}
-    </div>
+    </>
   );
 };
 

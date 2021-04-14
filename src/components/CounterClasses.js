@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
   prices: {
     width: "80%",
     padding: "10px",
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
   },
   revenu: {
     width: "20%",
