@@ -24,20 +24,13 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Button variant="outlined" className={headerClasses.button}>
-            <NavLink
-              exact={true}
-              to={"/coffe-counter"}
-              className={headerClasses.link}
-            >
+            <NavLink exact={true} to={"/"} className={headerClasses.link}>
               Home
             </NavLink>
             <Home style={{ color: "white" }} />
           </Button>
           <Button variant="outlined" className={headerClasses.button}>
-            <NavLink
-              to={"/coffe-counter/counter"}
-              className={headerClasses.link}
-            >
+            <NavLink to={"/counter"} className={headerClasses.link}>
               Coffe-counter
             </NavLink>
             <FreeBreakfast style={{ color: "white" }} />

@@ -12,8 +12,7 @@ const App = () => {
       <Header />
       <main>
         <Route path={"/"} exact={true} component={Home} />
-        <Route path={"/coffe-counter"} exact={true} component={Home} />
-        <Route path={"/coffe-counter/counter"} component={Counter} />
+        <Route path={"/counter"} component={Counter} />
       </main>
       <Footer />
     </>
