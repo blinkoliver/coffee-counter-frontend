@@ -1,6 +1,6 @@
 {
-  "homepage": "http://blinkoliver.github.io/coffe_counter_frontend",
-  "name": "coffe-counter",
+  "homepage": "http://blinkoliver.github.io/coffee-counter-frontend",
+  "name": "coffee-counter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
