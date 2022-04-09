@@ -12,7 +12,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.2",
     "gh-pages": "^2.2.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "notistack": "^1.0.5",
     "package.json": "^2.0.1",
     "prettier": "^2.0.1",
